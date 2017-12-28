@@ -1,0 +1,61 @@
+//获取浏览器cookie
+	public void getCookie() throws ClientProtocolException, IOException {
+		//1.获得一个httpclient对象
+		CloseableHttpClient httpclient = HttpClients.createDefault();
+		//2.生成一个get请求
+		HttpGet httpget = new HttpGet("http://test6-admin.dadaabc.us/welcome/login/");
+		//3.执行get请求并返回结果
+		CloseableHttpResponse response = httpclient.execute(httpget);
+		try {
+		    //4.处理结果
+			System.out.println("哈哈");
+			CookieStore cookieStore = new BasicCookieStore();
+			
+			List<Cookie> cookies = cookieStore.getCookies();
+			System.out.println("cookis内容：" +  cookies);
+			for(int i = 0; i < cookies.size(); i++) {
+				if (cookies.get(i).getName().equals("verify")) {
+				String	verifyCode = cookies.get(i).getValue();
+				verify = Integer.valueOf(verifyCode).intValue();
+					System.out.println("抓取 验证码");
+					System.out.println(verify);
+				}
+			}
+			
+			
+		} finally {
+			System.out.println(response);
+		    response.close();
+		}
+	}
+	public void getCookie2() {
+		CookieStore cookieStore = new BasicCookieStore();  
+	    CloseableHttpClient httpClient = HttpClients.custom()  
+	             .setDefaultCookieStore(cookieStore)  
+	             .build();  
+	     try {  
+	          
+	 		HttpGet get = new HttpGet("http://test6-admin.dadaabc.us/welcome/login/");
+ 
+	          httpClient.execute(get);//  
+	          List<Cookie> cookies = cookieStore.getCookies();  
+	          System.out.println(cookies.size());
+	          if (cookies.get(0).getName().equals("PHPSESSID")) {
+	        	  System.out.println(cookies.get(0).getValue());
+	          }
+	          System.out.println(cookies.get(0).toString());
+//	          for (int i = 0; i < cookies.size(); i++) {  
+//	              System.out.println("Local cookie: " + cookies.get(i)); 
+//	              if (cookies.get(i).getName().equals("verify")) {
+//	  				String	verifyCode = cookies.get(i).getValue();
+////	  				verify = Integer.valueOf(verifyCode).intValue();
+////	  					System.out.println("抓取 验证码");
+////	  					System.out.println(verify);
+//	  				}
+//	          }  
+	        } catch (Exception e) {  
+	            e.printStackTrace();  
+	        }finally{  
+	              
+	        }  	
+	}
