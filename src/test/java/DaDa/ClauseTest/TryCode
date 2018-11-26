@@ -3,7 +3,7 @@
 		//1.获得一个httpclient对象
 		CloseableHttpClient httpclient = HttpClients.createDefault();
 		//2.生成一个get请求
-		HttpGet httpget = new HttpGet("http://test6-admin.dadaabc.us/welcome/login/");
+		HttpGet httpget = new HttpGet("");
 		//3.执行get请求并返回结果
 		CloseableHttpResponse response = httpclient.execute(httpget);
 		try {
@@ -35,7 +35,7 @@
 	             .build();  
 	     try {  
 	          
-	 		HttpGet get = new HttpGet("http://test6-admin.dadaabc.us/welcome/login/");
+	 		HttpGet get = new HttpGet("");
  
 	          httpClient.execute(get);//  
 	          List<Cookie> cookies = cookieStore.getCookies();  
