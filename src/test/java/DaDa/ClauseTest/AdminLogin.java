@@ -25,7 +25,7 @@ public class AdminLogin {
 		//windows环境变量配置
 		System.setProperty("webdriver.chrome.driver", "E:\\chromedriver.exe");
 		driver = new ChromeDriver();
-		driver.get("https://test6-admin.dadaabc.us");
+		driver.get("");
 		driver.manage().window().maximize();
 	}
 	public void plantCookies() {
